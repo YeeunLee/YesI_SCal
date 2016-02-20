@@ -19,6 +19,7 @@ public class Calculate {
     public static String changeContent(String content)
     {
         content = content.replace("Log","L");
+        content = content.replace("-(","-1×(");
 
         return content;
     }
@@ -38,8 +39,7 @@ public class Calculate {
                 return -1;
         }
     }
-
-    public String result(String content)
+    public String compute(String content)
     {
         char[] operationCode = {'+', '-', '×', '÷', '(', ')','L'}; //연산 부호
 

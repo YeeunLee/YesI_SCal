@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView2;
     private TextView textView1;
     private Calculate cal;
+    private boolean shiftFlag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,15 +20,39 @@ public class MainActivity extends AppCompatActivity {
         textView1 = (TextView)findViewById(R.id.textView1);
         textView2 = (TextView)findViewById(R.id.textView2);
         cal = new Calculate();
+        shiftFlag = false;
     }
 
+    public void onShift(View view)
+    {
+        TextView tv = (TextView)findViewById(R.id.menu1);
+        if(shiftFlag)
+        {
+            tv.setText("");
+            shiftFlag = false;
+        }
+        else {
+            tv.setText("Shift");
+            shiftFlag = true;
+        }
+    }
+    public void offShift(View view)
+    {
+        if(shiftFlag)
+        {
+            TextView tv = (TextView)findViewById(R.id.menu1);
+            tv.setText("");
+            shiftFlag = false;
+        }
+    }
     public void onClickResultBtn(View view)
     {
         try {
             String str = textView2.getText().toString();
             textView1.setText(str + "=");
             str = cal.changeContent(str);
-            textView2.setText(cal.result(str));
+            textView2.setText(cal.compute(str));
+            offShift(view);
         }
         catch (Exception e)
         {
@@ -36,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     {
         String content = textView2.getText().toString();
         textView2.setText("-(" + content + ")");
+        offShift(view);
     }
     public void onClickDelBtn(View view)
     {
@@ -60,11 +88,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         textView2.setText(str);
+        offShift(view);
     }
     public void onClickAcBtn(View view)
     {
         textView1.setText("");
         textView2.setText("0");
+        offShift(view);
     }
     public void onClickFuncBtn(View view)
     {
@@ -90,28 +120,47 @@ public class MainActivity extends AppCompatActivity {
         }
 
         textView2.setText(str);
+        offShift(view);
     }
     public void onClickOpBtn(View view)
     {
         String str="";
 
-        switch (view.getId())
+        if(shiftFlag)
         {
-            case R.id.sumBtn:
-                str ="+";
-                break;
-            case R.id.subBtn:
-                str="-";
-                break;
-            case R.id.multipleBtn:
-                str="×";
-                break;
-            case R.id.divBtn:
-                str = "÷";
-                break;
-
+            TextView numberSystem = (TextView)findViewById(R.id.menu2);
+            str = cal.compute(textView2.toString());
+            switch (view.getId()) {
+                case R.id.sumBtn:
+                    break;
+                case R.id.subBtn:
+                    break;
+                case R.id.multipleBtn:
+                    break;
+                case R.id.divBtn:
+                    break;
+            }
+            textView2.setText(str);
         }
-        textView2.append(str);
+        else {
+            switch (view.getId()) {
+                case R.id.sumBtn:
+                    str = "+";
+                    break;
+                case R.id.subBtn:
+                    str = "-";
+                    break;
+                case R.id.multipleBtn:
+                    str = "×";
+                    break;
+                case R.id.divBtn:
+                    str = "÷";
+                    break;
+
+            }
+            textView2.append(str);
+        }
+        offShift(view);
     }
     public void onClickNumBtn(View view)
     {
@@ -126,51 +175,91 @@ public class MainActivity extends AppCompatActivity {
             textView1.setText("");
             str ="";
         }
-        switch (view.getId())
-        {
-            case R.id.openBtn:
-                str +="(";
-                break;
-            case R.id.closeBtn:
-                str +=")";
-                break;
-            case R.id.zeroBtn:
-                str += "0";
-                break;
-            case R.id.oneBtn:
-                str += "1";
-                break;
-            case R.id.twoBtn:
-                str += "2";
-                break;
-            case R.id.threeBtn:
-                str += "3";
-                break;
-            case R.id.fourBtn:
-                str += "4";
-                break;
-            case R.id.fiveBtn:
-                str += "5";
-                break;
-            case R.id.sixBtn:
-                str += "6";
-                break;
-            case R.id.sevenBtn:
-                str += "7";
-                break;
-            case R.id.eightBtn:
-                str += "8";
-                break;
-            case R.id.nineBtn:
-                str += "9";
-                break;
-            case R.id.pointBtn:
-                str +=".";
-                break;
-            default:
-                break;
-        }
 
+        if(shiftFlag)
+        {
+            switch (view.getId())
+            {
+                case R.id.zeroBtn:
+                    offShift(view);
+                    break;
+                case R.id.oneBtn:
+                    break;
+                case R.id.twoBtn:
+                    break;
+                case R.id.threeBtn:
+                    break;
+                case R.id.fourBtn:
+                    str += "X";
+                    break;
+                case R.id.fiveBtn:
+                    str += "Y";
+                    break;
+                case R.id.sixBtn:
+                    str += "Z";
+                    break;
+                case R.id.sevenBtn:
+                    str += "A";
+                    break;
+                case R.id.eightBtn:
+                    str += "B";
+                    break;
+                case R.id.nineBtn:
+                    str += "C";
+                    break;
+                case R.id.pointBtn:
+                    offShift(view);
+                    break;
+                default:
+                    break;
+            }
+        }
+        else {
+            switch (view.getId()) {
+                case R.id.openBtn:
+                    str += "(";
+                    break;
+                case R.id.closeBtn:
+                    str += ")";
+                    break;
+                case R.id.zeroBtn:
+                    str += "0";
+                    break;
+                case R.id.oneBtn:
+                    str += "1";
+                    break;
+                case R.id.twoBtn:
+                    str += "2";
+                    break;
+                case R.id.threeBtn:
+                    str += "3";
+                    break;
+                case R.id.fourBtn:
+                    str += "4";
+                    break;
+                case R.id.fiveBtn:
+                    str += "5";
+                    break;
+                case R.id.sixBtn:
+                    str += "6";
+                    break;
+                case R.id.sevenBtn:
+                    str += "7";
+                    break;
+                case R.id.eightBtn:
+                    str += "8";
+                    break;
+                case R.id.nineBtn:
+                    str += "9";
+                    break;
+                case R.id.pointBtn:
+                    str += ".";
+                    break;
+                default:
+                    break;
+            }
+        }
         textView2.setText(str);
+        offShift(view);
     }
 }

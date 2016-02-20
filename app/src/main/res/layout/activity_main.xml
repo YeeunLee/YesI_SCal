@@ -7,15 +7,43 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingEnd="16dp"
     tools:context="com.app.yesi.scal.MainActivity">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="38">
+        android:weightSum="42">
 
         <!--display-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:id="@+id/menubar"
+            android:background="@color/colorPrimary"
+            android:layout_weight="1"
+            android:weightSum="6">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/menu1"
+                android:layout_weight="2"
+                android:gravity="right"
+                android:textColor="@android:color/white"
+                android:textSize="5dp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/menu2"
+                android:layout_weight="4"
+                android:gravity="right"
+                android:textColor="@android:color/white"
+                android:textSize="3dp"
+                android:text="DEC"/>
+        </LinearLayout>
+
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -40,7 +68,27 @@
             android:textColor="@android:color/white"
             android:textSize="18dp"
             />
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:weightSum="6">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Shift"
+                android:onClick="onShift"/>
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="menu"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"/>
+        </LinearLayout>
         <!-- row 0-->
         <LinearLayout
             android:orientation="horizontal"
@@ -696,14 +744,14 @@
 
             <Button
                 android:text="+/-"
-                android:id="@+id/mult10Btn"
+                android:id="@+id/negBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNegBtn"/>
 
             <Button
-                android:text="Ans"
+                android:text="ANS"
                 android:id="@+id/ansBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
