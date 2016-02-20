@@ -181,7 +181,7 @@
                 android:layout_weight="1" />
 
             <Button
-                android:text="x^-1"
+                android:text="x⁻¹"
                 android:id="@+id/powm1Btn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
