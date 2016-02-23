@@ -70,6 +70,7 @@ public class Calculate {
                 return 1;
             case '×':
             case '÷':
+            case '%':
                 return 2;
             case 'L'://log
                 return 3;
@@ -83,7 +84,7 @@ public class Calculate {
     }
     public String compute(String content)//계산
     {
-        char[] operationCode = {'+', '-', '×', '÷', '(', ')','L','!','C','P'}; //연산 부호
+        char[] operationCode = {'+', '-', '×', '÷','%', '(', ')','L','!','C','P'}; //연산 부호
 
         ArrayList<String> postfixList = new ArrayList<String>(); //후위표기법으로 변환 후 저장 할 ArrayList
         Stack<Character> opStack = new Stack<Character>(); // 연산 부호 우선순위처리 하며 후위 표기법으로 변경하는 Stack
@@ -210,6 +211,11 @@ public class Calculate {
                             rs = String.valueOf(s1 / s2);
                             calculatorStack.push(rs);
                             break;
+                        case '%':
+                            s1 = Double.parseDouble(calculatorStack.pop());
+                            rs = String.valueOf(s1%s2);
+                            calculatorStack.push(rs);
+                            break;
                         case '!':
                             rs = String.valueOf(factorial((int) s2));
                             calculatorStack.push(rs);
@@ -238,7 +244,6 @@ public class Calculate {
 
         return rearrange(re);
     }
-
     public String rearrange(double re)//소수점 정리
     {
       //  String result = String.format("%.10f", re); //소수점 10째짜리

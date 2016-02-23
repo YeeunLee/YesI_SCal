@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity {
 
     private TextView menu2;
@@ -39,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void offShift(View view) {
+    public void offShift() {
         if (shiftFlag) {
             TextView tv = (TextView) findViewById(R.id.menu1);
             tv.setText("");
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             textView1.setText(str + "=");
             str = cal.changeContent(str);
             textView2.setText(cal.compute(str));
-            offShift(view);
+            offShift();
         } catch (Exception e) {
             textView2.setText("Syntext Error");
         }
@@ -62,10 +60,16 @@ public class MainActivity extends AppCompatActivity {
     public void onClickNegBtn(View view) {
         String content = textView2.getText().toString();
         textView2.setText("-(" + content + ")");
-        offShift(view);
+        offShift();
     }
 
     public void onClickDelBtn(View view) {
+
+        if (shiftFlag) {
+            textView2.append("%");
+            offShift();
+            return;
+        }
         String str = textView2.getText().toString();
         if (str.equals("0")) {
             str = textView1.getText().toString();
@@ -83,16 +87,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
         textView2.setText(str);
-        offShift(view);
+        offShift();
     }
 
     public void onClickAcBtn(View view) {
         textView1.setText("");
         textView2.setText("0");
-        offShift(view);
+        offShift();
     }
 
     public void onClickFuncBtn(View view) {
+
         String str = textView2.getText().toString();
 
         if (str.equals("0")) {
@@ -112,60 +117,59 @@ public class MainActivity extends AppCompatActivity {
         }
 
         textView2.setText(str);
-        offShift(view);
+        offShift();
     }
 
     public void onClickOpBtn(View view) {
         String str = "";
-            if (shiftFlag) {
-                str = textView2.getText().toString();
+        if (shiftFlag) {
+            str = textView2.getText().toString();
 
-                if(!str.equals("0")) {
-                    textView1.setText(str + " = ");
-                    str = cal.changeContent(str);
-                    str = cal.compute(str);
-                }
-
-                int nsNum = 10;
-                switch (view.getId()) {
-                    case R.id.sumBtn://십진법
-                        nsNum = 10;
-                        menu2.setText("DEC");
-                        break;
-                    case R.id.subBtn://8진법
-                        nsNum = 8;
-                        menu2.setText("HEX");
-                        break;
-                    case R.id.multipleBtn://2진법
-                        nsNum = 2;
-                        menu2.setText("BIN");
-                        break;
-                    case R.id.divBtn://16진법
-                        nsNum = 16;
-                        menu2.setText("OCT");
-                        break;
-                }
-
-                textView2.setText( ns.changeNumSys(str,nsNum));
-            } else {
-                switch (view.getId()) {
-                    case R.id.sumBtn:
-                        str = "+";
-                        break;
-                    case R.id.subBtn:
-                        str = "-";
-                        break;
-                    case R.id.multipleBtn:
-                        str = "×";
-                        break;
-                    case R.id.divBtn:
-                        str = "÷";
-                        break;
-
-                }
-                textView2.append(str);
+            if (!str.equals("0")) {
+                textView1.setText(str + " = ");
+                str = cal.changeContent(str);
+                str = cal.compute(str);
             }
-            offShift(view);
+
+            int nsNum = 10;
+            switch (view.getId()) {
+                case R.id.sumBtn://십진법
+                    nsNum = 10;
+                    menu2.setText("DEC");
+                    break;
+                case R.id.subBtn://8진법
+                    nsNum = 8;
+                    menu2.setText("HEX");
+                    break;
+                case R.id.multipleBtn://2진법
+                    nsNum = 2;
+                    menu2.setText("BIN");
+                    break;
+                case R.id.divBtn://16진법
+                    nsNum = 16;
+                    menu2.setText("OCT");
+                    break;
+            }
+
+            textView2.setText(ns.changeNumSys(str, nsNum));
+        } else {
+            switch (view.getId()) {
+                case R.id.sumBtn:
+                    str = "+";
+                    break;
+                case R.id.subBtn:
+                    str = "-";
+                    break;
+                case R.id.multipleBtn:
+                    str = "×";
+                    break;
+                case R.id.divBtn:
+                    str = "÷";
+                    break;
+            }
+            textView2.append(str);
+        }
+        offShift();
     }
 
     public void onClickNumBtn(View view) {
@@ -181,7 +185,6 @@ public class MainActivity extends AppCompatActivity {
         if (shiftFlag) {
             switch (view.getId()) {
                 case R.id.zeroBtn:
-                    offShift(view);
                     break;
                 case R.id.oneBtn://factorial
                     str += "!";
@@ -211,7 +214,6 @@ public class MainActivity extends AppCompatActivity {
                     str += "C";
                     break;
                 case R.id.pointBtn:
-                    offShift(view);
                     break;
                 default:
                     break;
@@ -262,6 +264,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         textView2.setText(str);
-        offShift(view);
+        offShift();
     }
 }
