@@ -16,14 +16,52 @@ public class Calculate {
 
     }
 
-    public static String changeContent(String content)
+    public String factorial(int n) //n!
+    {
+        if(n==0)
+        {
+            return "1";
+        }
+        double result = 1;
+        for(int i = 2;i<=n;i++)
+        {
+            result *= i;
+        }
+        return rearrange(result);
+    }
+    public String combination(int n,int r)
+    {
+        double result1 = 1, result2 = 1;
+
+        for(int i = n; i > n-r; i-- )
+        {
+            result1 *= i;
+        }
+        for(int i = 1; i <= r; i++ ) {
+            result2 *= i;
+        }
+
+        return rearrange(result1/result2);
+    }
+    public String permutation(int n,int r)
+    {
+        double result = n;
+
+        for(int i = n-1; i > n-r; i-- )
+        {
+            result *= i;
+        }
+
+        return rearrange(result);
+    }
+    public String changeContent(String content)//문자 재배열
     {
         content = content.replace("Log","L");
         content = content.replace("-(","-1×(");
 
         return content;
     }
-    public static int makeOpOrder(char c)
+    public int makeOpOrder(char c)//우선순위
     {
         switch (c)
         {
@@ -35,13 +73,17 @@ public class Calculate {
                 return 2;
             case 'L'://log
                 return 3;
+            case '!'://factorial
+            case 'C'://combination
+            case 'P'://permutation
+                return 4;
             default:
                 return -1;
         }
     }
-    public String compute(String content)
+    public String compute(String content)//계산
     {
-        char[] operationCode = {'+', '-', '×', '÷', '(', ')','L'}; //연산 부호
+        char[] operationCode = {'+', '-', '×', '÷', '(', ')','L','!','C','P'}; //연산 부호
 
         ArrayList<String> postfixList = new ArrayList<String>(); //후위표기법으로 변환 후 저장 할 ArrayList
         Stack<Character> opStack = new Stack<Character>(); // 연산 부호 우선순위처리 하며 후위 표기법으로 변경하는 Stack
@@ -168,9 +210,24 @@ public class Calculate {
                             rs = String.valueOf(s1 / s2);
                             calculatorStack.push(rs);
                             break;
+                        case '!':
+                            rs = String.valueOf(factorial((int) s2));
+                            calculatorStack.push(rs);
+                            break;
                         case 'L':
                             rs = String.valueOf(log10(s2));
                             calculatorStack.push(rs);
+                            break;
+                        case 'C':
+                            s1 = Double.parseDouble(calculatorStack.pop());
+                            rs = String.valueOf(combination((int)s1,(int)s2));
+                            calculatorStack.push(rs);
+                            break;
+                        case 'P':
+                            s1 = Double.parseDouble(calculatorStack.pop());
+                            rs = String.valueOf(permutation((int)s1,(int)s2));
+                            calculatorStack.push(rs);
+                            break;
                     }
                 }
             }
@@ -178,7 +235,15 @@ public class Calculate {
 
         double re = Double.parseDouble(calculatorStack.peek()); //Stack Top 데이터
 
-        String result = String.format("%.10f", re); //소수점 10째짜리
+
+        return rearrange(re);
+    }
+
+    public String rearrange(double re)//소수점 정리
+    {
+      //  String result = String.format("%.10f", re); //소수점 10째짜리
+
+        String result = Double.toString(re);
 
         //정수 부분 자리 구하기
         int num = 0;
@@ -204,6 +269,8 @@ public class Calculate {
         {
             result = String.format("%.0f", re);
         }
+
         return result;
     }
+
 }

@@ -176,7 +176,6 @@ public class MainActivity extends AppCompatActivity {
         }
         if (!textView1.getText().toString().equals("")) {
             textView1.setText("");
-            str = "";
         }
 
         if (shiftFlag) {
@@ -184,11 +183,14 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.zeroBtn:
                     offShift(view);
                     break;
-                case R.id.oneBtn:
+                case R.id.oneBtn://factorial
+                    str += "!";
                     break;
-                case R.id.twoBtn:
+                case R.id.twoBtn://combination
+                    str += "C";
                     break;
                 case R.id.threeBtn:
+                    str += "P";
                     break;
                 case R.id.fourBtn:
                     str += "X";
