@@ -39,7 +39,7 @@
                 android:layout_weight="4"
                 android:gravity="right"
                 android:textColor="@android:color/white"
-                android:textSize="3dp"
+                android:textSize="5dp"
                 android:text="DEC"/>
         </LinearLayout>
 
