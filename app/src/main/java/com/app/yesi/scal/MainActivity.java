@@ -172,6 +172,8 @@ public class MainActivity extends AppCompatActivity {
 
             textView2.setText(ns.changeNumSys(str, nsNum));
         } else {
+            if(!textView1.getText().toString().equals(""))
+            {textView1.setText("");}
             switch (view.getId()) {
                 case R.id.sumBtn:
                     str = "+";
@@ -199,6 +201,8 @@ public class MainActivity extends AppCompatActivity {
         }
         if (!textView1.getText().toString().equals("")) {
             textView1.setText("");
+            textView2.setText("");
+            str = "";
         }
 
         if (shiftFlag) {
