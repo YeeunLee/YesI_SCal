@@ -273,6 +273,9 @@ public class MainActivity extends AppCompatActivity {
                     str += "9";
                     break;
                 case R.id.pointBtn:
+                    if(str.equals("")||((str.charAt(str.length()-1)<'0')&&(str.charAt(str.length()-1)>'9'))) {
+                    str +="0";
+                    }
                     str += ".";
                     break;
                 default:
