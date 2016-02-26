@@ -57,7 +57,7 @@ public class Calculate {
     public String changeContent(String content)//문자 재배열
     {
         content = content.replace("Log","L");
-        content = content.replace("-(","-1×(");
+        content = content.replace("-(","0-1×(");
 
         return content;
     }
@@ -197,9 +197,14 @@ public class Calculate {
                             calculatorStack.push(rs);
                             break;
                         case '-':
-                            s1 = Double.parseDouble(calculatorStack.pop());
-                            rs = String.valueOf(s1 - s2);
-                            calculatorStack.push(rs);
+                            if(!calculatorStack.isEmpty()) {
+                                s1 = Double.parseDouble(calculatorStack.pop());
+                                rs = String.valueOf(s1 - s2);
+                                calculatorStack.push(rs);
+                            }
+                            else{
+                                calculatorStack.push(String.valueOf(-1*s2));
+                            }
                             break;
                         case '×':
                             s1 = Double.parseDouble(calculatorStack.pop());

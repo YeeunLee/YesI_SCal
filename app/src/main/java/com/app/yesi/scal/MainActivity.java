@@ -48,16 +48,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickResultBtn(View view) {
-        try {
+        //try {
             String str = textView2.getText().toString();
             textView1.setText(str + "=");
             str = cal.changeContent(str);
             ans = cal.compute(str);
             textView2.setText(cal.compute(ans));
             offShift();
+        /*
         } catch (Exception e) {
             textView2.setText("Syntext Error");
-        }
+        }*/
     }
 
     public void onClickNegBtn(View view) {
