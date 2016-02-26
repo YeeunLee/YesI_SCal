@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
     private Calculate cal;
     private NumberSystem ns;
     private boolean shiftFlag;
-    private String ans; //바로전 계산값
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         cal = new Calculate();
         ns = new NumberSystem();
         shiftFlag = false;
-        ans = "0";
     }
 
     public void onShift(View view) {
@@ -48,17 +46,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickResultBtn(View view) {
-        //try {
+        if(shiftFlag)
+        {
+            textView2.append("=");
+            offShift();
+        }
+        else{
+            //try {
             String str = textView2.getText().toString();
-            textView1.setText(str + "=");
-            str = cal.changeContent(str);
-            ans = cal.compute(str);
-            textView2.setText(cal.compute(ans));
+            textView1.setText(str);
+            textView2.setText(cal.compute(str));
             offShift();
         /*
         } catch (Exception e) {
             textView2.setText("Syntext Error");
         }*/
+        }
     }
 
     public void onClickNegBtn(View view) {
@@ -104,11 +107,11 @@ public class MainActivity extends AppCompatActivity {
     {
         if(textView2.getText().toString().equals("0"))
         {
-            textView2.setText(ans);
+            textView2.setText(cal.getAns());
         }
         else
         {
-            textView2.append(ans);
+            textView2.append(cal.getAns());
         }
     }
 

@@ -11,9 +11,14 @@ import static java.lang.Math.*;
  */
 public class Calculate {
 
+    private String ans; //바로전 계산값
+    private String X,Y,Z;
     public Calculate()
     {
-
+        ans = "0";
+        X = "0";
+        Y = "0";
+        Z = "0";
     }
 
     public String factorial(int n) //n!
@@ -78,19 +83,22 @@ public class Calculate {
             case 'C'://combination
             case 'P'://permutation
                 return 4;
+            case '=':
+                return 5;
             default:
                 return -1;
         }
     }
     public String compute(String content)//계산
     {
-        char[] operationCode = {'+', '-', '×', '÷','%', '(', ')','L','!','C','P'}; //연산 부호
+        char[] operationCode = {'+', '-', '×', '÷','%', '(', ')','L','!','C','P','='}; //연산 부호
 
         ArrayList<String> postfixList = new ArrayList<String>(); //후위표기법으로 변환 후 저장 할 ArrayList
         Stack<Character> opStack = new Stack<Character>(); // 연산 부호 우선순위처리 하며 후위 표기법으로 변경하는 Stack
         Stack<String> calculatorStack = new Stack<String>(); //후위 표기법을 계산하는 Stack
 
         int index = 0;//content.substring() 인수
+        content = changeContent(content);
 
         for(int i = 0; i < content.length(); i++)
         {
@@ -246,8 +254,8 @@ public class Calculate {
 
         double re = Double.parseDouble(calculatorStack.peek()); //Stack Top 데이터
 
-
-        return rearrange(re);
+        ans = rearrange(re);
+        return ans;
     }
     public String rearrange(double re)//소수점 정리
     {
@@ -283,4 +291,35 @@ public class Calculate {
         return result;
     }
 
+    public String getAns() {
+        return ans;
+    }
+
+    public void setAns(String ans) {
+        this.ans = ans;
+    }
+
+    public String getX() {
+        return X;
+    }
+
+    public void setX(String x) {
+        X = x;
+    }
+
+    public String getY() {
+        return Y;
+    }
+
+    public void setY(String y) {
+        Y = y;
+    }
+
+    public String getZ() {
+        return Z;
+    }
+
+    public void setZ(String z) {
+        Z = z;
+    }
 }
