@@ -1,17 +1,22 @@
 package com.app.yesi.scal;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView menu2;
-    private TextView textView2;
     private TextView textView1;
+    private TextView textView2;
     private Calculate cal;
     private NumberSystem ns;
+    private History his;
     private boolean shiftFlag;
 
     @Override
@@ -105,14 +110,30 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickAnsBtn(View view)
     {
-        if(textView2.getText().toString().equals("0"))
+        if(shiftFlag)
         {
-            textView2.setText(cal.getAns());
+            Dialog hisDialog = new Dialog(this);
+            hisDialog.setContentView(R.layout.history_layout);
+            hisDialog.setTitle("History");
+
+            hisDialog.show();
         }
         else
         {
-            textView2.append(cal.getAns());
+            String q = textView2.getText().toString();
+            String a = cal.getAns();
+            if(q.equals("0"))
+            {
+                textView2.setText(a);
+            }
+            else
+            {
+                textView2.append(a);
+            }
+            his.set(q,a);
         }
+
+        offShift();
     }
 
     public void onClickFuncBtn(View view) {
