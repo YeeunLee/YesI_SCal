@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             //try {
             String str = textView2.getText().toString();
             textView1.setText(str);
-            textView2.setText(cal.compute(str));
+            textView2.setText(cal.calculate(str));
             offShift();
         /*
         } catch (Exception e) {
@@ -195,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
             if (!str.equals("0")) {
                 textView1.setText(str + " = ");
                 str = cal.changeContent(str);
-                str = cal.compute(str);
+                str = cal.calculate(str);
             }
 
             int nsNum = 10;
