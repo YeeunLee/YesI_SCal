@@ -135,46 +135,46 @@
             android:weightSum="6">
 
             <Button
-                android:text="CAL"
                 android:id="@+id/calBtn"
+                android:background="@drawable/button_cal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <Button
-                android:text="적분"
                 android:id="@+id/IntegBtn"
+                android:background="@drawable/button_integral"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
-                android:text="DRG"
                 android:id="@+id/drgBtn"
+                android:background="@drawable/button_drg"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
-                android:text="FSE"
                 android:id="@+id/fseBtn"
+                android:background="@drawable/button_fse"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <Button
-                android:text="b/a"
-                android:id="@+id/baBtn"
+                android:id="@+id/fracBtn"
+                android:background="@drawable/button_fraction"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
                 android:id="@+id/convBtn"
+                android:background="@drawable/button_con"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="CONV" />
+                android:layout_weight="1" />
         </LinearLayout>
         <!--Button row 1 -->
         <LinearLayout
@@ -222,44 +222,44 @@
             android:weightSum="6">
 
             <Button
-                android:text="rootX"
                 android:id="@+id/rootBtn"
+                android:background="@drawable/button_root"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
-                android:text="x⁻¹"
                 android:id="@+id/powm1Btn"
+                android:background="@drawable/button_x_1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <Button
-                android:text="X^2"
                 android:id="@+id/pow2Btn"
+                android:background="@drawable/button_x2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
-                android:text="X^n"
                 android:id="@+id/pownBtn"
+                android:background="@drawable/button_xn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
-                android:text="log"
                 android:id="@+id/logBtn"
+                android:background="@drawable/button_log"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickFuncBtn"/>
 
             <Button
-                android:text="ln"
                 android:id="@+id/lnBtn"
+                android:background="@drawable/button_ln"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
@@ -311,43 +311,43 @@
             android:weightSum="6">
 
             <Button
-                android:text="ABS"
-                android:id="@+id/absBtn"
+                android:id="@+id/expBtn"
+                android:background="@drawable/button_exp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
-                android:text="DMS"
                 android:id="@+id/dmsBtn"
+                android:background="@drawable/button_dms"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
-                android:text="hyp"
                 android:id="@+id/hypBtn"
+                android:background="@drawable/button_hyp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
             <Button
-                android:text="sin"
                 android:id="@+id/sinBtn"
+                android:background="@drawable/button_sin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
-                android:text="cos"
                 android:id="@+id/cosBtn"
+                android:background="@drawable/button_cos"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
-                android:text="tan"
                 android:id="@+id/tanBtn"
+                android:background="@drawable/button_tan"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -400,45 +400,45 @@
             android:weightSum="6" >
 
             <Button
-                android:text="RCL"
                 android:id="@+id/rclBtn"
+                android:background="@drawable/button_rcl"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
-                android:text="STO"
                 android:id="@+id/stoBtn"
+                android:background="@drawable/button_sto"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
-                android:text="("
                 android:id="@+id/openBtn"
+                android:background="@drawable/button_left"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn"/>
 
             <Button
-                android:text=")"
                 android:id="@+id/closeBtn"
+                android:background="@drawable/button_right"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn"/>
 
             <Button
-                android:text="MR"
                 android:id="@+id/mrBtn"
+                android:background="@drawable/button_mr"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
 
             <Button
-                android:text="x->M"
                 android:id="@+id/xmBtn"
+                android:background="@drawable/button_xm"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
@@ -486,40 +486,40 @@
 
 
             <Button
-                android:text="7"
                 android:id="@+id/sevenBtn"
+                android:background="@drawable/button_7"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn"/>
 
             <Button
-                android:text="8"
                 android:id="@+id/eightBtn"
+                android:background="@drawable/button_8"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn"/>
 
             <Button
-                android:text="9"
                 android:id="@+id/nineBtn"
+                android:background="@drawable/button_9"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn" />
 
             <Button
-                android:text="DEL"
                 android:id="@+id/delBtn"
+                android:background="@drawable/button_del"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickDelBtn"/>
 
             <Button
-                android:text="AC"
                 android:id="@+id/acBtn"
+                android:background="@drawable/button_ac"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -567,40 +567,40 @@
             android:weightSum="5" >
 
             <Button
-                android:text="4"
                 android:id="@+id/fourBtn"
+                android:background="@drawable/button_4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn"/>
 
             <Button
-                android:text="5"
                 android:id="@+id/fiveBtn"
+                android:background="@drawable/button_5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn" />
 
             <Button
-                android:text="6"
                 android:id="@+id/sixBtn"
+                android:background="@drawable/button_6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn" />
 
             <Button
-                android:text="×"
                 android:id="@+id/multipleBtn"
+                android:background="@drawable/button_multiply"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickOpBtn"/>
 
             <Button
-                android:text="÷"
                 android:id="@+id/divBtn"
+                android:background="@drawable/button_divide"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -647,40 +647,40 @@
             android:weightSum="5" >
 
             <Button
-                android:text="1"
                 android:id="@+id/oneBtn"
+                android:background="@drawable/button_1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn"/>
 
             <Button
-                android:text="2"
                 android:id="@+id/twoBtn"
+                android:background="@drawable/button_2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn"/>
 
             <Button
-                android:text="3"
                 android:id="@+id/threeBtn"
+                android:background="@drawable/button_3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn" />
 
             <Button
-                android:text="+"
                 android:id="@+id/sumBtn"
+                android:background="@drawable/button_plus"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickOpBtn"/>
 
             <Button
-                android:text="-"
                 android:id="@+id/subBtn"
+                android:background="@drawable/button_minus"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -727,40 +727,40 @@
             android:weightSum="5" >
 
             <Button
-                android:text="0"
                 android:id="@+id/zeroBtn"
+                android:background="@drawable/button_0"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn"/>
 
             <Button
-                android:text="."
                 android:id="@+id/pointBtn"
+                android:background="@drawable/button_dot"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNumBtn"/>
 
             <Button
-                android:text="+/-"
                 android:id="@+id/negBtn"
+                android:background="@drawable/button_plusorminus"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickNegBtn"/>
 
             <Button
-                android:text="ANS"
                 android:id="@+id/ansBtn"
+                android:background="@drawable/button_ans"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="onClickAnsBtn"/>
 
             <Button
-                android:text="="
                 android:id="@+id/resultBtn"
+                android:background="@drawable/button_equal"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
