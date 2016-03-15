@@ -61,8 +61,16 @@ public class Calculate {
     }
     public String changeContent(String content)//문자 재배열
     {
-        content = content.replace("Log","L");
+        content = content.replace("Log","l");
         content = content.replace("-(","0-1×(");
+        content = content.replace("Sin","s");
+        content = content.replace("Cos","c");
+        content = content.replace("Tan","t");
+        content = content.replace("^2","$");
+        content = content.replace("1/","b");
+        content = content.replace("Ln","n");
+        content = content.replace("√","r");
+        content = content.replace("*10^", "p");
 
         return content;
     }
@@ -76,8 +84,17 @@ public class Calculate {
             case '×':
             case '÷':
             case '%':
+            case 'b':
+            case 'p':
                 return 2;
-            case 'L'://log
+            case 'l'://log
+            case 's':
+            case 'c':
+            case 't':
+            case '^':
+            case '$':
+            case 'n':
+            case 'r':
                 return 3;
             case '!'://factorial
             case 'C'://combination
@@ -91,7 +108,7 @@ public class Calculate {
     }
     public String compute(String content)//계산
     {
-        char[] operationCode = {'+', '-', '×', '÷','%', '(', ')','L','!','C','P','='}; //연산 부호
+            char[] operationCode = {'+', '-', '×', '÷','%', '(', ')','l','!','C','P','=', 's', 'c', 't', '^', '$', 'b', 'n' ,'r' ,'p'}; //연산 부호
 
         ArrayList<String> postfixList = new ArrayList<String>(); //후위표기법으로 변환 후 저장 할 ArrayList
         Stack<Character> opStack = new Stack<Character>(); // 연산 부호 우선순위처리 하며 후위 표기법으로 변경하는 Stack
@@ -233,9 +250,28 @@ public class Calculate {
                             rs = String.valueOf(factorial((int) s2));
                             calculatorStack.push(rs);
                             break;
-                        case 'L':
-                            rs = String.valueOf(log10(s2));
-                            calculatorStack.push(rs);
+                        case 'l':
+                            if(!calculatorStack.isEmpty()) {
+                                s1 = Double.parseDouble(calculatorStack.pop());
+                                rs = String.valueOf(s1*log10(s2));
+                                calculatorStack.push(rs);
+                            }
+                            else {
+                                rs = String.valueOf(log10(s2));
+                                calculatorStack.push(rs);
+                            }
+                            break;
+                        case 'n':
+                            if(!calculatorStack.isEmpty()) {
+                                s1 = Double.parseDouble(calculatorStack.pop());
+                                rs=String.valueOf(s1* log(s2));
+
+                                calculatorStack.push(rs);
+                            }
+                            else {
+                                rs = String.valueOf(log(s2));
+                                calculatorStack.push(rs);
+                            }
                             break;
                         case 'C':
                             s1 = Double.parseDouble(calculatorStack.pop());
@@ -246,6 +282,73 @@ public class Calculate {
                             s1 = Double.parseDouble(calculatorStack.pop());
                             rs = String.valueOf(permutation((int)s1,(int)s2));
                             calculatorStack.push(rs);
+                            break;
+                        case 's':
+                            if(!calculatorStack.isEmpty()) {
+                                s1 = Double.parseDouble(calculatorStack.pop());
+                                rs = String.valueOf(s1 * sin(s2));
+                                calculatorStack.push(rs);
+                            }
+                            else{
+                                rs=String.valueOf(sin(s2));
+                                calculatorStack.push(rs);
+                            }
+                            break;
+                        case 'c':
+                            if(!calculatorStack.isEmpty()) {
+                                s1 = Double.parseDouble(calculatorStack.pop());
+                                rs = String.valueOf(s1 * cos(s2));
+                                calculatorStack.push(rs);
+                            }
+                            else{
+                                rs=String.valueOf(cos(s2));
+                                calculatorStack.push(rs);
+                            }
+                            break;
+                        case 't':
+                            if(!calculatorStack.isEmpty()) {
+                                s1 = Double.parseDouble(calculatorStack.pop());
+                                rs = String.valueOf(s1 * tan(s2));
+                                calculatorStack.push(rs);
+                            }
+                            else{
+                                rs=String.valueOf(tan(s2));
+                                calculatorStack.push(rs);
+                            }
+                            break;
+                        case '^':
+                            s1 = Double.parseDouble(calculatorStack.pop());
+                            rs = String.valueOf(pow(s1,s2));
+                            calculatorStack.push(rs);
+                            break;
+                        case '$':
+                            rs = String.valueOf(pow(s2,2));
+                            calculatorStack.push(rs);
+                            break;
+                        case 'b':
+                            rs = String.valueOf(pow(s2,-1));
+                            calculatorStack.push(rs);
+                            break;
+                        case 'r':
+                            if(!calculatorStack.isEmpty()) {
+                                s1 = Double.parseDouble(calculatorStack.pop());
+                                rs = String.valueOf(s1 * sqrt(s2));
+                                calculatorStack.push(rs);
+                            }
+                            else{
+                                rs=String.valueOf(sqrt(s2));
+                                calculatorStack.push(rs);
+                            }
+                            break;
+                        case 'p':
+                            if(!calculatorStack.isEmpty()) {
+                                s1 = Double.parseDouble(calculatorStack.pop());
+                                rs = String.valueOf(s1 * pow(10,s2));
+                                calculatorStack.push(rs);
+                            }
+                            else{
+                                //Toast.makeText(.this, "수식이 정확한지 확인하세요", Toast.LENGTH_LONG).show();
+                            }
                             break;
                     }
                 }

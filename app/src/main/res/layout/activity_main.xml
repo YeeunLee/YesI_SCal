@@ -226,28 +226,32 @@
                 android:background="@drawable/button_root"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onClickFuncBtn"/>
 
             <Button
                 android:id="@+id/powm1Btn"
                 android:background="@drawable/button_x_1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:onClick="onClickFuncBtn"/>
 
             <Button
                 android:id="@+id/pow2Btn"
                 android:background="@drawable/button_x2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onClickFuncBtn" />
 
             <Button
                 android:id="@+id/pownBtn"
                 android:background="@drawable/button_xn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onClickFuncBtn" />
 
             <Button
                 android:id="@+id/logBtn"
@@ -262,7 +266,8 @@
                 android:background="@drawable/button_ln"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onClickFuncBtn" />
         </LinearLayout>
 
         <!-- row = 2 !-->
@@ -315,7 +320,8 @@
                 android:background="@drawable/button_exp"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onClickFuncBtn"/>
 
             <Button
                 android:id="@+id/dmsBtn"
@@ -336,21 +342,24 @@
                 android:background="@drawable/button_sin"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onClickFuncBtn"/>
 
             <Button
                 android:id="@+id/cosBtn"
                 android:background="@drawable/button_cos"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:onClick="onClickFuncBtn" />
 
             <Button
                 android:id="@+id/tanBtn"
                 android:background="@drawable/button_tan"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:onClick="onClickFuncBtn"/>
 
         </LinearLayout>
 

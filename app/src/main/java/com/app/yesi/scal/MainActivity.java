@@ -154,6 +154,33 @@ public class MainActivity extends AppCompatActivity {
             case R.id.logBtn:
                 str += "Log";
                 break;
+            case R.id.sinBtn:
+                str += "Sin";
+                break;
+            case R.id.cosBtn:
+                str += "Cos";
+                break;
+            case R.id.tanBtn:
+                str += "Tan";
+                break;
+            case R.id.pow2Btn:
+                str += "^2";
+                break;
+            case R.id.pownBtn:
+                str += "^";
+                break;
+            case R.id.powm1Btn:
+                str = "1/"+str;
+                break;
+            case R.id.lnBtn:
+                str += "Ln";
+                break;
+            case R.id.rootBtn:
+                str += "√";
+                break;
+            case R.id.expBtn:
+                str += "*10^";
+                break;
         }
 
         textView2.setText(str);
